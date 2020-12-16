@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -18,6 +19,8 @@ if((sd=socket(AF_INET,SOCK_STREAM,0))<0)
 printf("Error in socket\n");
 exit(0);
 }
+else
+printf("Socket created successfully...\n");
 bzero(&serv,sizeof(serv));
 // printf("Enter the port number : ");
 // scanf("%d",&port);
@@ -29,6 +32,8 @@ if(connect(sd,(struct sockaddr *)&serv,sizeof(serv))<0)
 printf("Error in connection\n");
 exit(0);
 }
+else
+printf("Connection established with the server...\n");
 while(1)
 {
 printf("Enter the command:");
