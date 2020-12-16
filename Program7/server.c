@@ -17,6 +17,8 @@ if((sd=socket(AF_INET,SOCK_STREAM,0))<0)
 printf("Error in socket\n");
 exit(0);
 }
+else
+printf("Socket created successfully...\n");
 bzero(&serv,sizeof(serv));
 // printf("Enter the port number : ");
 // scanf("%d",&port);
@@ -28,16 +30,22 @@ if(bind(sd,(struct sockaddr *)&serv,sizeof(serv))<0)
 printf("Error in bind\n");
 exit(0); 
 }
+else
+printf("Binding Socket to IP: %s\n",inet_ntoa(serv.sin_addr));
 if(listen(sd,3)<0)
 {
 printf("Error in listen\n");
 exit(0);
 }
+else
+printf("\nServer listening...");
 if((acpt=accept(sd,(struct sockaddr*)NULL,NULL))<0)
 {
 printf("\n\t Error in accept");
 exit(0);
 }
+else
+printf("\nClient connected...");
 while(1)
 {
 bytes=recv(acpt,receiv,50,0);
