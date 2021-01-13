@@ -16,29 +16,35 @@ int fd, cnt;
 char *message;
 struct ip_mreq mreq;
 if(argc==1)
-{message="RVCE_CSE";}
+{message="RVCE_CSE";
+}
 else
 {message=argv[1];}
+//printf("%s\n", message);
 /* create what looks like an ordinary UDP socket */
 if ((fd=socket(AF_INET,SOCK_DGRAM,0)) < 0) {
-perror("socket");
+perror("Opening datagram socket error");
 exit(1);
 }
+else{
+printf("Opening the datagram socket...OK...\n");}
 /* set up destination address */
 memset(&addr,0,sizeof(addr));
 addr.sin_family=AF_INET;
 addr.sin_addr.s_addr=inet_addr(HELLO_GROUP);
 addr.sin_port=htons(HELLO_PORT);
+
 /* now just sendto() our destination! */
 while (1) {
-if (sendto(fd,message,sizeof(message),0,(struct sockaddr *)
+if (sendto(fd,message,strlen(message),0,(struct sockaddr *)
 &addr,
 sizeof(addr)) < 0) {
-perror("sendto");
+perror("Sending datagram message error");
 exit(1);
 }
+else
+            {printf("Sending datagram message...OK\n");}//printf("%s\n", message);}
 sleep(2);
 }
 return 0;
 }
-
