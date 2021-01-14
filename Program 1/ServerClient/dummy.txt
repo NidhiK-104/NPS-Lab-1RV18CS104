@@ -1,8 +1,0 @@
-hello
-Ciphertext: This is the scrambled message produced as output. It depends on
-the plaintext and the secret key. For a given message, two different keys will
-produce two different ciphertexts. The ciphertext is an apparently random
-stream of data and, as it stands, is unintelligible.
-Decryption algorithm: This is essentially the encryption algorithm run in
-reverse. It takes the ciphertext and the secret key and produces the original
-plaintext.
